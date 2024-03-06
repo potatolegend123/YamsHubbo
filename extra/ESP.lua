@@ -4,13 +4,10 @@ else
     return
 end
 
-ESPGroup = Tabs.Visuals:AddLeftGroupbox('ESP', "Center")
-ESPTeams = Tabs.Visuals:AddRightGroupbox('Players', "Center")
-ESPConfigGroup = Tabs.Visuals:AddLeftGroupbox('Configuration', "Center")
-
 ESP = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Sirius/request/library/esp/esp.lua'))()
 ESP.options.enabled = false
 
+ESPGroup = Tabs.Visuals:AddLeftGroupbox('ESP', "Center")
 ESPGroup:AddToggle('ToggleESP', {
     Text = 'ESP',
     Default = false, -- Default value (true / false)
@@ -20,6 +17,7 @@ ESPGroup:AddToggle('ToggleESP', {
     end
 })
 
+ESPTeams = Tabs.Visuals:AddRightGroupbox('Players', "Center")
 ESPTeams:AddToggle('teamCheck', {
     Text = 'Team Check',
     Default = false, -- Default value (true / false)
@@ -38,14 +36,15 @@ ESPTeams:AddToggle('teamColor', {
     end
 })
 
-ESPConfigGroup:AddToggle('names', {
+ESPPlayersGroup = Tabs.Visuals:AddLeftGroupbox('Players', "Center")
+ESPPlayersGroup:AddToggle('names', {
     Text = 'Show Names',
     Default = false, -- Default value (true / false)
     Callback = function(Value)
         ESP.options.names = Value
     end
 })
-ESPConfigGroup:AddLabel('Color'):AddColorPicker('nameColor', {
+ESPPlayersGroup:AddLabel('Color'):AddColorPicker('nameColor', {
     Default = Color3.new(1,1,1), -- Bright green
     Title = 'Name Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -55,14 +54,14 @@ ESPConfigGroup:AddLabel('Color'):AddColorPicker('nameColor', {
     end
 })
 
-ESPConfigGroup:AddToggle('healthBars', {
+ESPPlayersGroup:AddToggle('healthBars', {
     Text = 'Show Health Bar',
     Default = false, -- Default value (true / false)
     Callback = function(Value)
         ESP.options.healthBars = Value
     end
 })
-ESPConfigGroup:AddLabel('Color'):AddColorPicker('healthBarsColor', {
+ESPPlayersGroup:AddLabel('Color'):AddColorPicker('healthBarsColor', {
     Default = Color3.new(0, 1, 0), -- Bright green
     Title = 'Health Bar Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -71,14 +70,14 @@ ESPConfigGroup:AddLabel('Color'):AddColorPicker('healthBarsColor', {
         ESP.options.healthBarsColor = Value
     end
 })
-ESPConfigGroup:AddToggle('healthText', {
+ESPPlayersGroup:AddToggle('healthText', {
     Text = 'Show Health Bar',
     Default = false, -- Default value (true / false)
     Callback = function(Value)
         ESP.options.healthText = Value
     end
 })
-ESPConfigGroup:AddLabel('Color'):AddColorPicker('healthTextColor', {
+ESPPlayersGroup:AddLabel('Color'):AddColorPicker('healthTextColor', {
     Default = Color3.new(1,1,1), -- Bright green
     Title = 'Health Bar Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -87,6 +86,8 @@ ESPConfigGroup:AddLabel('Color'):AddColorPicker('healthTextColor', {
         ESP.options.healthTextColor = Value
     end
 })
+
+ESPConfigGroup = Tabs.Visuals:AddRightGroupbox('Configs', "Center")
 ESPConfigGroup:AddToggle('boxes', {
     Text = 'Show Boxes',
     Default = false, -- Default value (true / false)

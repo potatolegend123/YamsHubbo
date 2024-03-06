@@ -17,26 +17,15 @@ ESPGroup:AddToggle('ToggleESP', {
     end
 })
 
-ESPTeams = Tabs.Visuals:AddRightGroupbox('Players', "Center")
-ESPTeams:AddToggle('teamCheck', {
-    Text = 'Team Check',
+ESPPlayersGroup = Tabs.Visuals:AddRightGroupbox('Players', "Center")
+ESPPlayersGroup:AddToggle('healthTextBars', {
+    Text = 'Show Health',
     Default = false, -- Default value (true / false)
-
     Callback = function(Value)
-       ESP.options.teamCheck = Value
+        ESP.options.healthBars = Value
+        ESP.options.healthText = Value
     end
 })
-
-ESPTeams:AddToggle('teamColor', {
-    Text = 'Team Color',
-    Default = false, -- Default value (true / false)
-
-    Callback = function(Value)
-        ESP.options.teamColor = Value
-    end
-})
-
-ESPPlayersGroup = Tabs.Visuals:AddLeftGroupbox('Players', "Center")
 ESPPlayersGroup:AddToggle('visibleOnly', {
     Text = 'Show Visible Only',
     Default = false, -- Default value (true / false)
@@ -61,12 +50,22 @@ ESPPlayersGroup:AddLabel('Color'):AddColorPicker('nameColor', {
     end
 })
 
-ESPPlayersGroup:AddToggle('healthTextBars', {
-    Text = 'Show Health',
+ESPTeams = Tabs.Visuals:AddRightGroupbox('Teams', "Center")
+ESPTeams:AddToggle('teamCheck', {
+    Text = 'Team Check',
     Default = false, -- Default value (true / false)
+
     Callback = function(Value)
-        ESP.options.healthBars = Value
-        ESP.options.healthText = Value
+       ESP.options.teamCheck = Value
+    end
+})
+
+ESPTeams:AddToggle('teamColor', {
+    Text = 'Team Color',
+    Default = false, -- Default value (true / false)
+
+    Callback = function(Value)
+        ESP.options.teamColor = Value
     end
 })
 
@@ -138,7 +137,7 @@ ESPDistanceGroup:AddToggle('limitdistances', {
 })
 ESPDistanceGroup:AddSlider('distanceSlider', {
     Text = 'Max Distance',
-    Default = 30,
+    Default = 500,
     Min = 1,
     Max = 1000,
     Rounding = 1,

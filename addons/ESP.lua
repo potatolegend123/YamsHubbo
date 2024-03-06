@@ -37,6 +37,13 @@ ESPTeams:AddToggle('teamColor', {
 })
 
 ESPPlayersGroup = Tabs.Visuals:AddLeftGroupbox('Players', "Center")
+ESPPlayersGroup:AddToggle('visibleOnly', {
+    Text = 'Show Visible Only',
+    Default = false, -- Default value (true / false)
+    Callback = function(Value)
+        ESP.options.visibleOnly = Value
+    end
+})
 ESPPlayersGroup:AddToggle('names', {
     Text = 'Show Names',
     Default = false, -- Default value (true / false)
@@ -44,7 +51,7 @@ ESPPlayersGroup:AddToggle('names', {
         ESP.options.names = Value
     end
 })
-ESPPlayersGroup:AddLabel('Color'):AddColorPicker('nameColor', {
+ESPPlayersGroup:AddColorPicker('nameColor', {
     Default = Color3.new(1,1,1), -- Bright green
     Title = 'Name Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -54,48 +61,24 @@ ESPPlayersGroup:AddLabel('Color'):AddColorPicker('nameColor', {
     end
 })
 
-ESPPlayersGroup:AddToggle('healthBars', {
-    Text = 'Show Health Bar',
+ESPPlayersGroup:AddToggle('healthTextBars', {
+    Text = 'Show Health',
     Default = false, -- Default value (true / false)
     Callback = function(Value)
         ESP.options.healthBars = Value
-    end
-})
-ESPPlayersGroup:AddLabel('Color'):AddColorPicker('healthBarsColor', {
-    Default = Color3.new(0, 1, 0), -- Bright green
-    Title = 'Health Bar Color', -- Optional. Allows you to have a custom color picker title (when you open it)
-    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
-
-    Callback = function(Value)
-        ESP.options.healthBarsColor = Value
-    end
-})
-ESPPlayersGroup:AddToggle('healthText', {
-    Text = 'Show Health Bar',
-    Default = false, -- Default value (true / false)
-    Callback = function(Value)
         ESP.options.healthText = Value
     end
 })
-ESPPlayersGroup:AddLabel('Color'):AddColorPicker('healthTextColor', {
-    Default = Color3.new(1,1,1), -- Bright green
-    Title = 'Health Bar Color', -- Optional. Allows you to have a custom color picker title (when you open it)
-    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
 
-    Callback = function(Value)
-        ESP.options.healthTextColor = Value
-    end
-})
-
-ESPConfigGroup = Tabs.Visuals:AddRightGroupbox('Configs', "Center")
-ESPConfigGroup:AddToggle('boxes', {
+ESPBoxesGroup = Tabs.Visuals:AddRightGroupbox('Boxes', "Center")
+ESPBoxesGroup:AddToggle('boxes', {
     Text = 'Show Boxes',
     Default = false, -- Default value (true / false)
     Callback = function(Value)
         ESP.options.boxes = Value
     end
 })
-ESPConfigGroup:AddLabel('Color'):AddColorPicker('boxesColor', {
+ESPBoxesGroup:AddLabel('Color'):AddColorPicker('boxesColor', {
     Default = Color3.new(1,1,1), -- Bright green
     Title = 'Boxes Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -104,7 +87,7 @@ ESPConfigGroup:AddLabel('Color'):AddColorPicker('boxesColor', {
         ESP.options.boxesColor = Value
     end
 })
-ESPConfigGroup:AddSlider('boxesTransparency', {
+ESPBoxesGroup:AddSlider('boxesTransparency', {
     Text = 'Boxes Transparency',
     Default = 0.5,
     Min = 0,
@@ -116,9 +99,9 @@ ESPConfigGroup:AddSlider('boxesTransparency', {
         ESP.options.boxesTransparency = Value
     end
 })
-ESPConfigGroup:AddSlider('boxFillTransparency', {
+ESPBoxesGroup:AddSlider('boxFillTransparency', {
     Text = 'Boxes Fill Transparency',
-    Default = 0.5,
+    Default = 1,
     Min = 0,
     Max = 1,
     Rounding = 1,
@@ -128,7 +111,7 @@ ESPConfigGroup:AddSlider('boxFillTransparency', {
         ESP.options.boxFillTransparency = Value
     end
 })
-ESPConfigGroup:AddLabel('Color'):AddColorPicker('boxFillColor', {
+ESPBoxesGroup:AddLabel('Color'):AddColorPicker('boxFillColor', {
     Default = Color3.new(1,0,0), -- Bright green
     Title = 'Boxes Fill Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -137,14 +120,16 @@ ESPConfigGroup:AddLabel('Color'):AddColorPicker('boxFillColor', {
         ESP.options.boxFillColor = Value
     end
 })
-ESPConfigGroup:AddToggle('distances', {
+
+ESPDistanceGroup = Tabs.Visuals:AddRightGroupbox('Distance', "Center")
+ESPDistanceGroup:AddToggle('distances', {
     Text = 'Show Distances',
     Default = false, -- Default value (true / false)
     Callback = function(Value)
         ESP.options.distance = Value
     end
 })
-ESPConfigGroup:AddLabel('Color'):AddColorPicker('distanceColor', {
+ESPDistanceGroup:AddLabel('Color'):AddColorPicker('distanceColor', {
     Default = Color3.new(1,1,1), -- Bright green
     Title = 'Distance Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -153,14 +138,14 @@ ESPConfigGroup:AddLabel('Color'):AddColorPicker('distanceColor', {
         ESP.options.distanceColor = Value
     end
 })
-ESPConfigGroup:AddToggle('limitdistances', {
+ESPDistanceGroup:AddToggle('limitdistances', {
     Text = 'Limit Distances',
     Default = false, -- Default value (true / false)
     Callback = function(Value)
         ESP.options.limitDistance = Value
     end
 })
-ESPConfigGroup:AddSlider('distanceSlider', {
+ESPDistanceGroup:AddSlider('distanceSlider', {
     Text = 'Max Distance',
     Default = 30,
     Min = 1,
@@ -172,30 +157,25 @@ ESPConfigGroup:AddSlider('distanceSlider', {
         ESP.options.maxDistance = Value
     end
 })
-ESPConfigGroup:AddToggle('tracers', {
+
+ESPTracersGroup = Tabs.Visuals:AddRightGroupbox('Tracers', "Center")
+ESPTracersGroup:AddToggle('tracers', {
     Text = 'Show Tracers',
     Default = false, -- Default value (true / false)
     Callback = function(Value)
         ESP.options.tracers = Value
     end
 })
-ESPConfigGroup:AddLabel('Color'):AddColorPicker('tracerColor', {
-    Default = Color3.new(1,1,1), -- Bright green
-    Title = 'Tracer Color', -- Optional. Allows you to have a custom color picker title (when you open it)
-    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
 
-    Callback = function(Value)
-        ESP.options.tracerColor = Value
-    end
-})
-ESPConfigGroup:AddToggle('chams', {
+ESPChamsGroup = Tabs.Visuals:AddRightGroupbox('Chams', "Center")
+ESPChamsGroup:AddToggle('chams', {
     Text = 'Show Chams',
     Default = false, -- Default value (true / false)
     Callback = function(Value)
         ESP.options.chams = Value
     end
 })
-ESPConfigGroup:AddSlider('chamsFillTransparency', {
+ESPChamsGroup:AddSlider('chamsFillTransparency', {
     Text = 'Chams Fill Transparency',
     Default = 0.5,
     Min = 0,
@@ -207,7 +187,7 @@ ESPConfigGroup:AddSlider('chamsFillTransparency', {
         ESP.options.chamsFillTransparency = Value
     end
 })
-ESPConfigGroup:AddLabel('Color'):AddColorPicker('chamsOutlineColor', {
+ESPChamsGroup:AddLabel('Color'):AddColorPicker('chamsOutlineColor', {
     Default = Color3.new(), -- Bright green
     Title = 'Chams Outline Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -216,20 +196,13 @@ ESPConfigGroup:AddLabel('Color'):AddColorPicker('chamsOutlineColor', {
         ESP.options.chamsOutlineColor = Value
     end
 })
-ESPConfigGroup:AddLabel('Color'):AddColorPicker('chamsFillColor', {
+ESPChamsGroup:AddLabel('Color'):AddColorPicker('chamsFillColor', {
     Default = Color3.new(1,0,0), -- Bright green
     Title = 'Chams Fill Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
 
     Callback = function(Value)
         ESP.options.chamsFillColor = Value
-    end
-})
-ESPConfigGroup:AddToggle('visibleOnly', {
-    Text = 'Show Visible Only',
-    Default = false, -- Default value (true / false)
-    Callback = function(Value)
-        ESP.options.visibleOnly = Value
     end
 })
 

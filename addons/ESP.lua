@@ -69,7 +69,7 @@ ESPTeams:AddToggle('teamColor', {
     end
 })
 
-ESPBoxesGroup = Tabs.Visuals:AddRightGroupbox('Boxes', "Center")
+ESPBoxesGroup = Tabs.Visuals:AddLeftGroupbox('Boxes', "Center")
 ESPBoxesGroup:AddToggle('boxes', {
     Text = 'Show Boxes',
     Default = false, -- Default value (true / false)
@@ -120,7 +120,7 @@ ESPBoxesGroup:AddLabel('Fill'):AddColorPicker('boxFillColor', {
     end
 })
 
-ESPDistanceGroup = Tabs.Visuals:AddRightGroupbox('Distance', "Center")
+ESPDistanceGroup = Tabs.Visuals:AddLeftGroupbox('Distance', "Center")
 ESPDistanceGroup:AddToggle('distances', {
     Text = 'Show Distances',
     Default = false, -- Default value (true / false)
@@ -186,7 +186,7 @@ ESPTracersGroup:AddLabel('Color'):AddColorPicker('tracerColor', {
 })
 
 
-ESPChamsGroup = Tabs.Visuals:AddLeftGroupbox('Chams', "Center")
+ESPChamsGroup = Tabs.Visuals:AddRightGroupbox('Chams', "Center")
 ESPChamsGroup:AddToggle('chams', {
     Text = 'Show Chams',
     Default = false, -- Default value (true / false)
@@ -225,7 +225,7 @@ ESPChamsGroup:AddLabel('Fill Color'):AddColorPicker('chamsFillColor', {
     end
 })
 
-ESPArrowsGroup = Tabs.Visuals:AddLeftGroupbox('Out Of View Arrows', "Center")
+ESPArrowsGroup = Tabs.Visuals:AddRightGroupbox('Out Of View Arrows', "Center")
 ESPArrowsGroup:AddToggle('outOfViewArrows', {
     Text = 'Show Arrows',
     Default = false, -- Default value (true / false)

@@ -108,7 +108,7 @@ ESPConfigGroup:AddSlider('boxesTransparency', {
     Default = 0.5,
     Min = 0,
     Max = 1,
-    Rounding = 0.1,
+    Rounding = 1,
     Compact = false,
 
     Callback = function(Value)
@@ -120,7 +120,7 @@ ESPConfigGroup:AddSlider('boxFillTransparency', {
     Default = 0.5,
     Min = 0,
     Max = 1,
-    Rounding = 0.1,
+    Rounding = 1,
     Compact = false,
 
     Callback = function(Value)
@@ -199,7 +199,7 @@ ESPConfigGroup:AddSlider('chamsFillTransparency', {
     Default = 0.5,
     Min = 0,
     Max = 1,
-    Rounding = 0.1,
+    Rounding = 1,
     Compact = false,
 
     Callback = function(Value)

@@ -176,7 +176,7 @@ ESPTracersGroup:AddDropdown('tracerOrigin', {
         ESP.options.tracerOrigin = Value
     end
 })
-ESPChamsGroup:AddLabel('Color'):AddColorPicker('tracerColor', {
+ESPTracersGroup:AddLabel('Color'):AddColorPicker('tracerColor', {
     Default = Color3.new(1,0,0), -- Bright green
     Title = 'Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)

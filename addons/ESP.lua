@@ -9,7 +9,7 @@ ESP.options.enabled = false
 
 ESPGroup = Tabs.Visuals:AddLeftGroupbox('ESP', "Center")
 ESPGroup:AddToggle('ToggleESP', {
-    Text = 'ESP',
+    Text = 'Enabled',
     Default = false, -- Default value (true / false)
 
     Callback = function(Value)
@@ -78,15 +78,6 @@ ESPBoxesGroup:AddToggle('boxes', {
         ESP.options.boxes = Value
     end
 })
-ESPBoxesGroup:AddLabel('Color'):AddColorPicker('boxesColor', {
-    Default = Color3.new(1,1,1), -- Bright green
-    Title = 'Boxes Color', -- Optional. Allows you to have a custom color picker title (when you open it)
-    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
-
-    Callback = function(Value)
-        ESP.options.boxesColor = Value
-    end
-})
 ESPBoxesGroup:AddSlider('boxesTransparency', {
     Text = 'Boxes Transparency',
     Default = 0.5,
@@ -101,7 +92,7 @@ ESPBoxesGroup:AddSlider('boxesTransparency', {
 })
 ESPBoxesGroup:AddSlider('boxFillTransparency', {
     Text = 'Boxes Fill Transparency',
-    Default = 1,
+    Default = 0,
     Min = 0,
     Max = 1,
     Rounding = 1,
@@ -111,9 +102,18 @@ ESPBoxesGroup:AddSlider('boxFillTransparency', {
         ESP.options.boxFillTransparency = Value
     end
 })
-ESPBoxesGroup:AddLabel('Color'):AddColorPicker('boxFillColor', {
+ESPBoxesGroup:AddLabel('Border'):AddColorPicker('boxesColor', {
+    Default = Color3.new(1,1,1), -- Bright green
+    Title = 'Boxes Color', -- Optional. Allows you to have a custom color picker title (when you open it)
+    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
+
+    Callback = function(Value)
+        ESP.options.boxesColor = Value
+    end
+})
+ESPBoxesGroup:AddLabel('Fill'):AddColorPicker('boxFillColor', {
     Default = Color3.new(1,0,0), -- Bright green
-    Title = 'Boxes Fill Color', -- Optional. Allows you to have a custom color picker title (when you open it)
+    Title = 'Boxes Fill', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
 
     Callback = function(Value)
@@ -226,15 +226,15 @@ ESPChamsGroup:AddLabel('Fill Color'):AddColorPicker('chamsFillColor', {
     end
 })
 
-ESPTracersGroup = Tabs.Visuals:AddLeftGroupbox('Out Of View Arrows', "Center")
-ESPTracersGroup:AddToggle('outOfViewArrows', {
+ESPArrowsGroup = Tabs.Visuals:AddLeftGroupbox('Out Of View Arrows', "Center")
+ESPArrowsGroup:AddToggle('outOfViewArrows', {
     Text = 'Show Arrows',
     Default = false, -- Default value (true / false)
     Callback = function(Value)
         ESP.options.outOfViewArrows = Value
     end
 })
-ESPBoxesGroup:AddSlider('outOfViewArrowsSize', {
+ESPArrowsGroup:AddSlider('outOfViewArrowsSize', {
     Text = 'Size',
     Default = 25,
     Min = 0,
@@ -246,7 +246,7 @@ ESPBoxesGroup:AddSlider('outOfViewArrowsSize', {
         ESP.options.outOfViewArrowsSize = Value
     end
 })
-ESPBoxesGroup:AddSlider('outOfViewArrowsRadius', {
+ESPArrowsGroup:AddSlider('outOfViewArrowsRadius', {
     Text = 'Radius',
     Default = 100,
     Min = 0,
@@ -258,7 +258,7 @@ ESPBoxesGroup:AddSlider('outOfViewArrowsRadius', {
         ESP.options.outOfViewArrowsRadius = Value
     end
 })
-ESPChamsGroup:AddLabel('Color'):AddColorPicker('outOfViewArrowsColor', {
+ESPArrowsGroup:AddLabel('Color'):AddColorPicker('outOfViewArrowsColor', {
     Default = Color3.new(1, 1, 1), -- Bright green
     Title = 'Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)

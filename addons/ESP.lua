@@ -129,15 +129,6 @@ ESPDistanceGroup:AddToggle('distances', {
         ESP.options.distance = Value
     end
 })
-ESPDistanceGroup:AddLabel('Color'):AddColorPicker('distanceColor', {
-    Default = Color3.new(1,1,1), -- Bright green
-    Title = 'Distance Color', -- Optional. Allows you to have a custom color picker title (when you open it)
-    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
-
-    Callback = function(Value)
-        ESP.options.distanceColor = Value
-    end
-})
 ESPDistanceGroup:AddToggle('limitdistances', {
     Text = 'Limit Distances',
     Default = false, -- Default value (true / false)
@@ -157,8 +148,17 @@ ESPDistanceGroup:AddSlider('distanceSlider', {
         ESP.options.maxDistance = Value
     end
 })
+ESPDistanceGroup:AddLabel('Color'):AddColorPicker('distanceColor', {
+    Default = Color3.new(1,1,1), -- Bright green
+    Title = 'Distance Color', -- Optional. Allows you to have a custom color picker title (when you open it)
+    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
 
-ESPTracersGroup = Tabs.Visuals:AddRightGroupbox('Tracers', "Center")
+    Callback = function(Value)
+        ESP.options.distanceColor = Value
+    end
+})
+
+ESPTracersGroup = Tabs.Visuals:AddLeftGroupbox('Tracers', "Center")
 ESPTracersGroup:AddToggle('tracers', {
     Text = 'Show Tracers',
     Default = false, -- Default value (true / false)
@@ -166,8 +166,28 @@ ESPTracersGroup:AddToggle('tracers', {
         ESP.options.tracers = Value
     end
 })
+ESPTracersGroup:AddDropdown('tracerOrigin', {
+    Values = {'Mouse', 'Top', 'Bottom'},
+    Default = 'Bottom', -- number index of the value / string
+    Multi = false, -- true / false, allows multiple choices to be selected
+    Text = 'Tracer Origin',
 
-ESPChamsGroup = Tabs.Visuals:AddRightGroupbox('Chams', "Center")
+    Callback = function(Value)
+        ESP.options.tracerOrigin = Value
+    end
+})
+ESPChamsGroup:AddLabel('Color'):AddColorPicker('tracerColor', {
+    Default = Color3.new(1,0,0), -- Bright green
+    Title = 'Color', -- Optional. Allows you to have a custom color picker title (when you open it)
+    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
+
+    Callback = function(Value)
+        ESP.options.tracerColor = Value
+    end
+})
+
+
+ESPChamsGroup = Tabs.Visuals:AddLeftGroupbox('Chams', "Center")
 ESPChamsGroup:AddToggle('chams', {
     Text = 'Show Chams',
     Default = false, -- Default value (true / false)
@@ -187,22 +207,64 @@ ESPChamsGroup:AddSlider('chamsFillTransparency', {
         ESP.options.chamsFillTransparency = Value
     end
 })
-ESPChamsGroup:AddLabel('Color'):AddColorPicker('chamsOutlineColor', {
+ESPChamsGroup:AddLabel('Outline Color'):AddColorPicker('chamsOutlineColor', {
     Default = Color3.new(), -- Bright green
-    Title = 'Chams Outline Color', -- Optional. Allows you to have a custom color picker title (when you open it)
+    Title = 'Outline Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
 
     Callback = function(Value)
         ESP.options.chamsOutlineColor = Value
     end
 })
-ESPChamsGroup:AddLabel('Color'):AddColorPicker('chamsFillColor', {
+ESPChamsGroup:AddLabel('Fill Color'):AddColorPicker('chamsFillColor', {
     Default = Color3.new(1,0,0), -- Bright green
-    Title = 'Chams Fill Color', -- Optional. Allows you to have a custom color picker title (when you open it)
+    Title = 'Fill Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
 
     Callback = function(Value)
         ESP.options.chamsFillColor = Value
+    end
+})
+
+ESPTracersGroup = Tabs.Visuals:AddLeftGroupbox('Out Of View Arrows', "Center")
+ESPTracersGroup:AddToggle('outOfViewArrows', {
+    Text = 'Show Arrows',
+    Default = false, -- Default value (true / false)
+    Callback = function(Value)
+        ESP.options.outOfViewArrows = Value
+    end
+})
+ESPBoxesGroup:AddSlider('outOfViewArrowsSize', {
+    Text = 'Size',
+    Default = 25,
+    Min = 0,
+    Max = 50,
+    Rounding = 1,
+    Compact = false,
+
+    Callback = function(Value)
+        ESP.options.outOfViewArrowsSize = Value
+    end
+})
+ESPBoxesGroup:AddSlider('outOfViewArrowsRadius', {
+    Text = 'Radius',
+    Default = 100,
+    Min = 0,
+    Max = 1000,
+    Rounding = 1,
+    Compact = false,
+
+    Callback = function(Value)
+        ESP.options.outOfViewArrowsRadius = Value
+    end
+})
+ESPChamsGroup:AddLabel('Color'):AddColorPicker('outOfViewArrowsColor', {
+    Default = Color3.new(1, 1, 1), -- Bright green
+    Title = 'Color', -- Optional. Allows you to have a custom color picker title (when you open it)
+    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
+
+    Callback = function(Value)
+        ESP.options.outOfViewArrowsColor = Value
     end
 })
 

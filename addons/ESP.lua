@@ -4,7 +4,7 @@ else
     return
 end
 
-ESP = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Sirius/request/library/esp/esp.lua'))()
+ESP = loadstring(game:HttpGet('https://raw.githubusercontent.com/potatolegend123/YamsHubbo/main/libraries/ESP.lua'))()
 ESP.options.enabled = false
 
 ESPGroup = Tabs.Visuals:AddLeftGroupbox('ESP', "Center")

@@ -3277,7 +3277,7 @@ function Library:CreateWindow(...)
         end;
 
         function Tab:AddRightGroupbox(Name, Alignment)
-            return Tab:AddGroupbox({ Side = 2; Name = Name; });
+            return Tab:AddGroupbox({ Side = 2; Name = Name; Alignment = Alignment or "Left" });
         end;
 
         function Tab:AddTabbox(Info)

@@ -3230,7 +3230,7 @@ function Library:CreateWindow(...)
                 Position = UDim2.new(0, 4, 0, 2);
                 TextSize = 14;
                 Text = Info.Name;
-                TextXAlignment = Enum.TextXAlignment.Middle;
+                TextXAlignment = Enum.TextXAlignment[Info.Alignment];
                 ZIndex = 5;
                 Parent = BoxInner;
             });
@@ -3272,11 +3272,11 @@ function Library:CreateWindow(...)
             return Groupbox;
         end;
 
-        function Tab:AddLeftGroupbox(Name)
-            return Tab:AddGroupbox({ Side = 1; Name = Name; });
+        function Tab:AddLeftGroupbox(Name, Alignment)
+            return Tab:AddGroupbox({ Side = 1; Name = Name; Alignment = Alignment or "Left" });
         end;
 
-        function Tab:AddRightGroupbox(Name)
+        function Tab:AddRightGroupbox(Name, Alignment)
             return Tab:AddGroupbox({ Side = 2; Name = Name; });
         end;
 

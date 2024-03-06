@@ -231,3 +231,5 @@ ESPConfigGroup:AddToggle('visibleOnly', {
         ESP.options.visibleOnly = Value
     end
 })
+
+ESP:Load()

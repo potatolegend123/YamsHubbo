@@ -40,7 +40,7 @@ ESPPlayersGroup:AddToggle('names', {
         ESP.options.names = Value
     end
 })
-ESPPlayersGroup:AddLabel('Color'):AddColorPicker('nameColor', {
+ESPPlayersGroup:AddLabel({Text = 'Color'}):AddColorPicker('nameColor', {
     Default = Color3.new(1,1,1), -- Bright green
     Title = 'Name Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -101,7 +101,7 @@ ESPBoxesGroup:AddSlider('boxFillTransparency', {
         ESP.options.boxFillTransparency = Value
     end
 })
-ESPBoxesGroup:AddLabel('Border'):AddColorPicker('boxesColor', {
+ESPBoxesGroup:AddLabel({Text = 'Border'}):AddColorPicker('boxesColor', {
     Default = Color3.new(1,1,1), -- Bright green
     Title = 'Boxes Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -110,7 +110,7 @@ ESPBoxesGroup:AddLabel('Border'):AddColorPicker('boxesColor', {
         ESP.options.boxesColor = Value
     end
 })
-ESPBoxesGroup:AddLabel('Fill'):AddColorPicker('boxFillColor', {
+ESPBoxesGroup:AddLabel({Text = 'Fill'}):AddColorPicker('boxFillColor', {
     Default = Color3.new(1,0,0), -- Bright green
     Title = 'Boxes Fill', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -147,7 +147,7 @@ ESPDistanceGroup:AddSlider('distanceSlider', {
         ESP.options.maxDistance = Value
     end
 })
-ESPDistanceGroup:AddLabel('Color'):AddColorPicker('distanceColor', {
+ESPDistanceGroup:AddLabel({Text = 'Color'}):AddColorPicker('distanceColor', {
     Default = Color3.new(1,1,1), -- Bright green
     Title = 'Distance Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -175,7 +175,7 @@ ESPTracersGroup:AddDropdown('tracerOrigin', {
         ESP.options.tracerOrigin = Value
     end
 })
-ESPTracersGroup:AddLabel('Color'):AddColorPicker('tracerColor', {
+ESPTracersGroup:AddLabel({Text = 'Color'}):AddColorPicker('tracerColor', {
     Default = Color3.new(1,0,0), -- Bright green
     Title = 'Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -206,7 +206,7 @@ ESPChamsGroup:AddSlider('chamsFillTransparency', {
         ESP.options.chamsFillTransparency = Value
     end
 })
-ESPChamsGroup:AddLabel('Outline Color'):AddColorPicker('chamsOutlineColor', {
+ESPChamsGroup:AddLabel({Text = 'Outline Color'}):AddColorPicker('chamsOutlineColor', {
     Default = Color3.new(), -- Bright green
     Title = 'Outline Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -215,7 +215,7 @@ ESPChamsGroup:AddLabel('Outline Color'):AddColorPicker('chamsOutlineColor', {
         ESP.options.chamsOutlineColor = Value
     end
 })
-ESPChamsGroup:AddLabel('Fill Color'):AddColorPicker('chamsFillColor', {
+ESPChamsGroup:AddLabel({Text = 'Fill Color'}):AddColorPicker('chamsFillColor', {
     Default = Color3.new(1,0,0), -- Bright green
     Title = 'Fill Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
@@ -257,7 +257,7 @@ ESPArrowsGroup:AddSlider('outOfViewArrowsRadius', {
         ESP.options.outOfViewArrowsRadius = Value
     end
 })
-ESPArrowsGroup:AddLabel('Color'):AddColorPicker('outOfViewArrowsColor', {
+ESPArrowsGroup:AddLabel({Text = 'Color'}):AddColorPicker('outOfViewArrowsColor', {
     Default = Color3.new(1, 1, 1), -- Bright green
     Title = 'Color', -- Optional. Allows you to have a custom color picker title (when you open it)
     Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)

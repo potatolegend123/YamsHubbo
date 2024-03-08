@@ -76,11 +76,31 @@ local ThemeManager = {} do
 	end
 
 	function ThemeManager:CreateThemeManager(groupbox)
-		groupbox:AddLabel('Background color'):AddColorPicker('BackgroundColor', { Default = self.Library.BackgroundColor });
-		groupbox:AddLabel('Main color')	:AddColorPicker('MainColor', { Default = self.Library.MainColor });
-		groupbox:AddLabel('Accent color'):AddColorPicker('AccentColor', { Default = self.Library.AccentColor });
-		groupbox:AddLabel('Outline color'):AddColorPicker('OutlineColor', { Default = self.Library.OutlineColor });
-		groupbox:AddLabel('Font color')	:AddColorPicker('FontColor', { Default = self.Library.FontColor });
+		groupbox:AddLabel({
+            Text = "Background color",
+            Alignment = "Left", -- "Left", "Center", "Right", or nil == "Left"
+            DoesWrap = false,
+        }):AddColorPicker('BackgroundColor', { Default = self.Library.BackgroundColor });
+		groupbox:AddLabel({
+            Text = "Main color",
+            Alignment = "Left", -- "Left", "Center", "Right", or nil == "Left"
+            DoesWrap = false,
+        })	:AddColorPicker('MainColor', { Default = self.Library.MainColor });
+		groupbox:AddLabel({
+            Text = "Accent color",
+            Alignment = "Left", -- "Left", "Center", "Right", or nil == "Left"
+            DoesWrap = false,
+        }):AddColorPicker('AccentColor', { Default = self.Library.AccentColor });
+		groupbox:AddLabel({
+            Text = "Outline color",
+            Alignment = "Left", -- "Left", "Center", "Right", or nil == "Left"
+            DoesWrap = false,
+        }):AddColorPicker('OutlineColor', { Default = self.Library.OutlineColor });
+		groupbox:AddLabel({
+            Text = "Font color",
+            Alignment = "Left", -- "Left", "Center", "Right", or nil == "Left"
+            DoesWrap = false,
+        })	:AddColorPicker('FontColor', { Default = self.Library.FontColor });
 
 		local ThemesArray = {}
 		for Name, Theme in next, self.BuiltInThemes do

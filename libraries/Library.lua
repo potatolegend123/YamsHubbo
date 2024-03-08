@@ -3229,7 +3229,7 @@ function Library:CreateWindow(...)
                 Size = UDim2.new(1, 0, 0, 18);
                 Position = UDim2.new(0, 4, 0, 2);
                 TextSize = 14;
-                Text = `--====[<b> {Info.Name} </b>]====--`;
+                Text = `[<b> {Info.Name} </b>]`;
                 RichText = true;
                 TextXAlignment = Enum.TextXAlignment[Info.Alignment];
                 ZIndex = 5;

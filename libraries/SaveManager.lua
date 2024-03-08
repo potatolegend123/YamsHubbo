@@ -258,7 +258,11 @@ local SaveManager = {} do
 			self.Library:Notify(string.format('Set %q to auto load', name))
 		end)
 
-		SaveManager.AutoloadLabel = section:AddLabel('Current autoload config: none', true)
+		SaveManager.AutoloadLabel = section:AddLabel({
+            Text = "Current autoload config: none",
+            Alignment = "Left", -- "Left", "Center", "Right", or nil == "Left"
+            DoesWrap = true,
+        })
 
 		if isfile(self.Folder .. '/settings/autoload.txt') then
 			local name = readfile(self.Folder .. '/settings/autoload.txt')

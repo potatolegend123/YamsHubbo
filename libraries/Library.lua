@@ -1350,25 +1350,39 @@ do
         });
     end;
 
-    function Funcs:AddLabel(Info)
+    function Funcs:AddLabel(Info, DoesWrap)
         local Label = {};
 
         local Groupbox = self;
         local Container = Groupbox.Container;
 
+        local Text
+        local Alightment = Enum.TextXAlignment.Left
+        local DoesWrap = DoesWrap or false
+
+        if type(Info) == 'table' then
+            Text = Info.Text or ""
+            Alightment = Enum.TextXAlignment[Info.Alignment]
+            DoesWrap = Info.DoesWrap or false
+        elseif type(Info) == 'string' then
+            Text = Info
+        else
+            Text = ""
+        end
+
         local TextLabel = Library:CreateLabel({
             Size = UDim2.new(1, -4, 0, 15);
             TextSize = 14;
-            Text = Info.Text;
-            TextWrapped = Info.DoesWrap or false,
+            Text = Text;
+            TextWrapped = DoesWrap or false,
             RichText = true;
-            TextXAlignment = Enum.TextXAlignment[Info.Alignment or "Left"];
+            TextXAlignment = Alightment;
             ZIndex = 5;
             Parent = Container;
         });
 
-        if Info.DoesWrap then
-            local Y = select(2, Library:GetTextBounds(Info.Text, Library.Font, 14, Vector2.new(TextLabel.AbsoluteSize.X, math.huge)))
+        if DoesWrap then
+            local Y = select(2, Library:GetTextBounds(Text, Library.Font, 14, Vector2.new(TextLabel.AbsoluteSize.X, math.huge)))
             TextLabel.Size = UDim2.new(1, -4, 0, Y)
         else
             Library:Create('UIListLayout', {
@@ -1386,7 +1400,7 @@ do
         function Label:SetText(Text)
             TextLabel.Text = Text
 
-            if Info.DoesWrap then
+            if DoesWrap then
                 local Y = select(2, Library:GetTextBounds(Text, Library.Font, 14, Vector2.new(TextLabel.AbsoluteSize.X, math.huge)))
                 TextLabel.Size = UDim2.new(1, -4, 0, Y)
             end
@@ -1394,7 +1408,7 @@ do
             Groupbox:Resize();
         end
 
-        if (not Info.DoesWrap) then
+        if (not DoesWrap) then
             setmetatable(Label, BaseAddons);
         end
 

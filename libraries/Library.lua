@@ -1350,7 +1350,7 @@ do
         });
     end;
 
-    function Funcs:AddLabel(Text, Info)
+    function Funcs:AddLabel(Info)
         local Label = {};
 
         local Groupbox = self;
@@ -1359,7 +1359,7 @@ do
         local TextLabel = Library:CreateLabel({
             Size = UDim2.new(1, -4, 0, 15);
             TextSize = 14;
-            Text = Text;
+            Text = Info.Text;
             TextWrapped = Info.DoesWrap or false,
             RichText = true;
             TextXAlignment = Enum.TextXAlignment[Info.Alignment or "Left"];
@@ -1368,7 +1368,7 @@ do
         });
 
         if Info.DoesWrap then
-            local Y = select(2, Library:GetTextBounds(Text, Library.Font, 14, Vector2.new(TextLabel.AbsoluteSize.X, math.huge)))
+            local Y = select(2, Library:GetTextBounds(Info.Text, Library.Font, 14, Vector2.new(TextLabel.AbsoluteSize.X, math.huge)))
             TextLabel.Size = UDim2.new(1, -4, 0, Y)
         else
             Library:Create('UIListLayout', {

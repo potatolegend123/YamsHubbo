@@ -1357,19 +1357,17 @@ do
         local Container = Groupbox.Container;
 
         local Text
-        local Alightment
+        local Alightment = Enum.TextXAlignment.Left
         local DoesWrap = DoesWrap or false
 
         if type(Info) == 'table' then
             Text = Info.Text or ""
-            Alightment = Enum.TextXAlignment[Info.Alignment]
+            Alightment = Enum.TextXAlignment[Info.Alignment or "Left"]
             DoesWrap = Info.DoesWrap or false
         elseif type(Info) == 'string' then
             Text = Info
-            Alightment = Enum.TextXAlignment.Left
         else
             Text = ""
-            Alightment = Enum.TextXAlignment.Left
         end
 
         local TextLabel = Library:CreateLabel({

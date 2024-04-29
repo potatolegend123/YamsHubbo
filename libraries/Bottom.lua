@@ -118,8 +118,6 @@ Trove:Connect(RunService.RenderStepped, function()
 end);
 
 Library:OnUnload(function()
-    WatermarkConnection:Disconnect()
-
     if ESP then
         ESP:Unload()
     end
